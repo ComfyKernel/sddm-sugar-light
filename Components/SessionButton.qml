@@ -22,7 +22,7 @@ import QtQuick.Controls 2.4
 
 Item {
     id: sessionButton
-    height: root.font.pointSize
+    height: root.font.pointSize * 4
     width: parent.width / 2
     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -30,11 +30,15 @@ Item {
     property string textConstantSession
 
     ComboBox {
+        anchors.bottom : parent.bottom
+
         id: selectSession
 
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         hoverEnabled: true
+
+        height : root.font.pointSize * 3
 
         model: sessionModel
         currentIndex: model.lastIndex
@@ -63,22 +67,19 @@ Item {
 
         contentItem: Text {
             id: displayedItem
-            text: (config.TranslateSession || (textConstantSession + ":")) + " " + selectSession.currentText
+            text: (config.TranslateSession || (textConstantSession + " :")) + " " + selectSession.currentText
             color: root.palette.text // parent.down ? root.palette.text : parent.hovered ? Qt.lighter(root.palette.text, 1.8) : root.palette.text
             verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignLeft
+            horizontalAlignment: Text.AlignHCenter
             font.pointSize: root.font.pointSize * 0.8
         }
 
         background: Rectangle {
             color: "transparent"
-            border.width: parent.visualFocus ? 1 : 0
-            border.color: "transparent" // parent.visualFocus ? root.palette.text : "transparent"
-            height: parent.visualFocus ? 2 : 0
-            width: displayedItem.implicitWidth
-            anchors.top: parent.bottom
-            anchors.left: parent.left
+            border.width: parent.activeFocus ? 2 : 1
+            border.color: root.palette.text // parent.visualFocus ? root.palette.text : "transparent"
             radius: 20
+            height : root.font.pointSize * 3
         }
 
         popup: Popup {
@@ -124,7 +125,7 @@ Item {
                     border.color: Qt.lighter(config.AccentColor, 1.1)
                 }
             },
-            State {
+            /*State {
                 name: "hovered"
                 when: selectSession.hovered
                 PropertyChanges {
@@ -135,7 +136,7 @@ Item {
                     target: selectSession.background
                     border.color: Qt.lighter(config.AccentColor, 1.3)
                 }
-            },
+            },*/
             State {
                 name: "focused"
                 when: selectSession.visualFocus
