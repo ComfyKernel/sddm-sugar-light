@@ -53,6 +53,7 @@ Item {
             highlighted: parent.highlightedIndex === index
             background: Rectangle {
                 color: selectSession.highlightedIndex === index ? root.palette.text : "transparent"
+                radius: 20
             }
         }
 
@@ -77,6 +78,7 @@ Item {
             width: displayedItem.implicitWidth
             anchors.top: parent.bottom
             anchors.left: parent.left
+            radius: 20
         }
 
         popup: Popup {
@@ -101,6 +103,7 @@ Item {
                 anchors.bottom: parent.bottom
                 border.width: 1
                 border.color: root.palette.text
+                radius: 20
             }
 
             enter: Transition {
