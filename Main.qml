@@ -74,12 +74,12 @@ Pane{
 
         clip: true
 
-        RecursiveBlur {
+        GaussianBlur {
             id: blur
             width: parent.parent.width
             height: parent.parent.height
-            radius: 8
-            loops: 40
+            radius: 40
+            samples: 20
             source: image
             visible: false
         }
