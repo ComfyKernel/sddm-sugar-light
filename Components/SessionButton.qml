@@ -57,7 +57,7 @@ Item {
             highlighted: parent.highlightedIndex === index
             background: Rectangle {
                 color: selectSession.highlightedIndex === index ? root.palette.text : "transparent"
-                radius: 20
+                radius: config.RoundCorners || 0
             }
         }
 
@@ -78,8 +78,8 @@ Item {
             color: "transparent"
             border.width: parent.activeFocus ? 2 : 1
             border.color: root.palette.text // parent.visualFocus ? root.palette.text : "transparent"
-            radius: 20
-            height : root.font.pointSize * 3
+            radius: config.RoundCorners || 0
+            height: root.font.pointSize * 3
         }
 
         popup: Popup {
@@ -104,7 +104,7 @@ Item {
                 anchors.bottom: parent.bottom
                 border.width: 1
                 border.color: root.palette.text
-                radius: 20
+                radius: config.RoundCorners || 0
             }
 
             enter: Transition {
